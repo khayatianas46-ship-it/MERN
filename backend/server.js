@@ -1,6 +1,11 @@
 require("dotenv").config();
 
+const dns = require("dns");
+dns.setServers(["8.8.8.8"]);
+dns.setDefaultResultOrder("ipv4first");
+
 const express = require("express");
+const mongoose = require("mongoose");
 const workoutRoutes = require("./routes/workouts");
 
 //express app
@@ -15,10 +20,18 @@ app.use((req, res, next) => {
 });
 
 //routes
-app.use('/api/workouts', workoutRoutes);
+app.use("/api/workouts", workoutRoutes);
 
-
-//listen for requests
-app.listen(process.env.PORT || 4000, () => {
-  console.log(`listening on port ${process.env.PORT || 4000}`);
-});
+//connect to db
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    app.listen(process.env.PORT || 4000, () => {
+      console.log(`connected to db and 
+        
+        listening on port ${process.env.PORT || 4000}`);
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
