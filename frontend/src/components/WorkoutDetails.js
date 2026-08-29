@@ -9,6 +9,7 @@ const WorkoutDetails = ({ workout }) => {
         <strong>Reps:</strong> {workout.reps}
       </p>
       <p>{workout.createdAt}</p>
+      {/* test */}
     </div>
   );
 };
