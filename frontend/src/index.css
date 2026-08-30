@@ -133,4 +133,27 @@ input:focus {
   nav a {
     margin-left: 12px;
   }
+  .workout-details button {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  .workout-details button:hover {
+    background: #b91c1c;
+  }
+  input.error {
+    border: 1px solid var(--error);
+    border-color: #dc2626;
+  }
+
+  :root {
+    --error: #dc2626;
+    --primary: #16a34a;
+  }
 }
